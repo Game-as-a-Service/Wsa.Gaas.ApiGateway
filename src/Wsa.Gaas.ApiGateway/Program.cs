@@ -1,8 +1,8 @@
-using LobbyPlatform.ApiGateway;
-using LobbyPlatform.ApiGateway.Options;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Serilog;
+using Wsa.Gaas.ApiGateway;
+using Wsa.Gaas.ApiGateway.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((cxt, cfg) => cfg.ReadFrom.Configuration(cxt.Configuration));

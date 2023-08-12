@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Primitives;
 using Yarp.ReverseProxy.Configuration;
 
+namespace Wsa.Gaas.ApiGateway;
+
 internal class MongoDbConfig : IProxyConfig
 {
     public IReadOnlyList<RouteConfig> Routes { get; set; }

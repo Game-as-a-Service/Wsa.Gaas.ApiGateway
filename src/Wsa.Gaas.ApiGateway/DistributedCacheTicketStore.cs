@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace LobbyPlatform.ApiGateway;
+namespace Wsa.Gaas.ApiGateway;
 
 public class DistributedCacheTicketStore : ITicketStore
 {
@@ -63,5 +63,5 @@ public class DistributedCacheTicketStore : ITicketStore
         return Task.CompletedTask;
     }
 
-    
+
 }

@@ -4,7 +4,6 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>LobbyPlatform.ApiGateway</RootNamespace>
     <UserSecretsId>fccdadb2-a325-45df-8d24-26ea79718ec4</UserSecretsId>
   </PropertyGroup>
 
