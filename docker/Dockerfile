@@ -1,19 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
-EXPOSE 80
-
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-WORKDIR /src
-COPY ["Lobby-Platform-ApiGateway.csproj", "."]
-RUN dotnet restore "./Lobby-Platform-ApiGateway.csproj"
 COPY . .
-WORKDIR "/src/."
-RUN dotnet build "Lobby-Platform-ApiGateway.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "Lobby-Platform-ApiGateway.csproj" -c Release -o /app/publish /p:UseAppHost=false
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Lobby-Platform-ApiGateway.dll"]
+ENTRYPOINT ["dotnet", "Wsa.Gaas.ApiGateway.dll"]

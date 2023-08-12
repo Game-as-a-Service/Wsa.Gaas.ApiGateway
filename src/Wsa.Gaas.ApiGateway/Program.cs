@@ -38,7 +38,7 @@ builder.Services
             OnRedirectToIdentityProvider = cxt =>
             {
                 cxt.ProtocolMessage.SetParameter("connection", cxt.Properties.GetString("connection"));
-                
+
                 cxt.ProtocolMessage.SetParameter("audience", "https://api.gaas.waterballsa.tw");
 
                 return Task.CompletedTask;
