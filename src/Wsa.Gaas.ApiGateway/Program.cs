@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.HttpOverrides;
 using Serilog;
 using Wsa.Gaas.ApiGateway;
 using Wsa.Gaas.ApiGateway.Options;
@@ -45,9 +46,18 @@ builder.Services
             }
         };
     })
+    .Services
+    .Configure<ForwardedHeadersOptions>(opt =>
+    {
+        opt.ForwardedHeaders = ForwardedHeaders.All;
+        opt.KnownNetworks.Clear();
+        opt.KnownProxies.Clear();
+    })
     ;
 
 var app = builder.Build();
+
+app.UseForwardedHeaders();
 app.UseCors(opt =>
 {
     opt.AllowAnyHeader()
