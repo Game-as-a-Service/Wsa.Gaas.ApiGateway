@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.Extensions.Primitives;
 using System.Net.Http.Headers;
 using Yarp.ReverseProxy.Transforms;
 using Yarp.ReverseProxy.Transforms.Builder;
@@ -21,7 +22,10 @@ public class BffTransformer : ITransformProvider
 
     private async ValueTask ExtractJwtToken(RequestTransformContext cxt)
     {
-        if (await cxt.HttpContext.GetTokenAsync("access_token") is string jwt)
+        // Request 沒帶 JWT 就從 Cookie 解析
+        if (StringValues.IsNullOrEmpty(cxt.HttpContext.Request.Headers.Authorization)
+            && await cxt.HttpContext.GetTokenAsync("access_token") is string jwt
+        )
         {
             _logger.LogInformation("Forward with JWT {jwt}", jwt);
 

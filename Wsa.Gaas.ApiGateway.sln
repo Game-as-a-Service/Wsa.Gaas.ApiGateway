@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7596046E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wsa.Gaas.ApiGateway", "src\Wsa.Gaas.ApiGateway\Wsa.Gaas.ApiGateway.csproj", "{2A6C6306-A1A2-4CAD-856D-08D782D2C1B2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wsa.Gaas.ApiGatewayTests", "tests\Wsa.Gaas.ApiGatewayTests\Wsa.Gaas.ApiGatewayTests.csproj", "{33394285-D3D8-4314-B5C8-FC52A00F58AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,12 +21,17 @@ Global
 		{2A6C6306-A1A2-4CAD-856D-08D782D2C1B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A6C6306-A1A2-4CAD-856D-08D782D2C1B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A6C6306-A1A2-4CAD-856D-08D782D2C1B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33394285-D3D8-4314-B5C8-FC52A00F58AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33394285-D3D8-4314-B5C8-FC52A00F58AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33394285-D3D8-4314-B5C8-FC52A00F58AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33394285-D3D8-4314-B5C8-FC52A00F58AC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{2A6C6306-A1A2-4CAD-856D-08D782D2C1B2} = {BDA42FAA-B558-4539-B747-D1AC3489F746}
+		{33394285-D3D8-4314-B5C8-FC52A00F58AC} = {7596046E-F73F-4083-B41E-5A0BAC8CBF9F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9E7F029B-F647-4F94-B0E1-C8D85ED55A2E}

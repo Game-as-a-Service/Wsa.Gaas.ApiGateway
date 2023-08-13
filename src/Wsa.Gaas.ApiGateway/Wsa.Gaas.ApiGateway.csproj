@@ -13,4 +13,8 @@
     <PackageReference Include="Yarp.ReverseProxy" Version="2.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <InternalsVisibleTo Include="Wsa.Gaas.ApiGatewayTests" />
+  </ItemGroup>
+
 </Project>
