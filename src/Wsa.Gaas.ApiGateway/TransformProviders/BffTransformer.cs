@@ -4,7 +4,7 @@ using System.Net.Http.Headers;
 using Yarp.ReverseProxy.Transforms;
 using Yarp.ReverseProxy.Transforms.Builder;
 
-namespace Wsa.Gaas.ApiGateway;
+namespace Wsa.Gaas.ApiGateway.TransformProviders;
 
 public class BffTransformer : ITransformProvider
 {

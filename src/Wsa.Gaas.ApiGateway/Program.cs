@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.HttpOverrides;
 using Serilog;
 using Wsa.Gaas.ApiGateway;
 using Wsa.Gaas.ApiGateway.Options;
+using Wsa.Gaas.ApiGateway.Services;
+using Wsa.Gaas.ApiGateway.TransformProviders;
+using Yarp.ReverseProxy.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((cxt, cfg) => cfg.ReadFrom.Configuration(cxt.Configuration));
@@ -13,6 +16,8 @@ builder.Services
     .LoadFromConfig(builder.Configuration.GetSection("ReverseProxy"))
     .AddTransforms<BffTransformer>()
     .Services
+    .AddSingleton<IProxyConfigProvider, MongoDbConfigProvider>()
+    .AddScoped<LobbyApiService>()
     .AddCors()
     .AddDataProtection()
     .Services
@@ -24,8 +29,9 @@ builder.Services
     .AddSingleton<ITicketStore, DistributedCacheTicketStore>()
     .ConfigureOptions<PostConfigureCookieTicketStore>()
 
-    // Frontend Options
-    .Configure<FrontendOptions>(opt => builder.Configuration.Bind(nameof(FrontendOptions), opt))
+    // LobbyApi Options
+    .Configure<LobbyApiOptions>(opt => builder.Configuration.Bind(nameof(LobbyApiOptions), opt))
+    .Configure<Auth0Options>(opt => builder.Configuration.Bind(nameof(Auth0Options), opt))
 
     // Open Id Options
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
@@ -33,7 +39,7 @@ builder.Services
     .AddOpenIdConnect("auth0", opt =>
     {
         builder.Configuration.Bind(nameof(OpenIdConnectOptions), opt);
-
+        
         opt.Events = new OpenIdConnectEvents
         {
             OnRedirectToIdentityProvider = cxt =>

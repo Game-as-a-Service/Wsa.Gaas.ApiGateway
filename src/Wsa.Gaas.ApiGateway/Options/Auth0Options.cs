@@ -1,7 +1,6 @@
 ﻿namespace Wsa.Gaas.ApiGateway.Options;
 
-public class FrontendOptions
+public class Auth0Options
 {
-    public required string Url { get; set; }
     public required string[] Providers { get; set; }
 }
