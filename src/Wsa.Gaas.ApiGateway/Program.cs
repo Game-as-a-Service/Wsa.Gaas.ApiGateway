@@ -29,9 +29,10 @@ builder.Services
     .AddSingleton<ITicketStore, DistributedCacheTicketStore>()
     .ConfigureOptions<PostConfigureCookieTicketStore>()
 
-    // LobbyApi Options
+    // Options
     .Configure<LobbyApiOptions>(opt => builder.Configuration.Bind(nameof(LobbyApiOptions), opt))
     .Configure<Auth0Options>(opt => builder.Configuration.Bind(nameof(Auth0Options), opt))
+    .Configure<MongoDbOptions>(opt => builder.Configuration.Bind(nameof(MongoDbOptions), opt))
 
     // Open Id Options
     .AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
